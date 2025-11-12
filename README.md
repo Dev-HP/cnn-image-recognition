@@ -25,7 +25,11 @@ pip install -r requirements.txt
 python cnn_api.py
 ```
 
-Acesse: **http://localhost:8080**
+### 3. Acessar a Interface
+
+Abra seu navegador em: **http://localhost:8080**
+
+> ⚠️ **Nota:** Este projeto precisa rodar localmente ou em um servidor. O GitHub não hospeda aplicações Python automaticamente.
 
 ### 3. Usar via Linha de Comando
 
