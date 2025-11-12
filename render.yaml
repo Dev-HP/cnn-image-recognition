@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: cnn-image-recognition
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python cnn_api.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
