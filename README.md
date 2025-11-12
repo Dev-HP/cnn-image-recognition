@@ -11,7 +11,12 @@ Sistema de reconhecimento de imagens usando Redes Neurais Convolucionais (CNN) c
 - ✅ Análise em tempo real
 - ✅ Top 5 previsões com porcentagem de confiança
 
-## 🚀 Como Usar
+## 🌐 Demo Online
+
+**Acesse a aplicação funcionando:**
+https://huggingface.co/spaces/HELIOOOOOOOOOOOO/cnn-image-recognition
+
+## 🚀 Como Usar Localmente
 
 ### 1. Instalar Dependências
 
