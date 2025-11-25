@@ -55,3 +55,4 @@ test_image.jpg
 
 # Logs
 *.log
+.vercel
