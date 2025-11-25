@@ -9,6 +9,7 @@ from fastapi import FastAPI, File, UploadFile, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import numpy as np
 import tensorflow as tf
@@ -17,6 +18,34 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_
 
 # Criar aplicação FastAPI
 app = FastAPI(title="CNN Image Recognition")
+
+# Configurar CORS
+# Obter origens permitidas da variável de ambiente ou usar padrões
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "")
+if allowed_origins_env:
+    # Se houver variável de ambiente, dividir por vírgula
+    allowed_origins = [origin.strip() for origin in allowed_origins_env.split(",")]
+else:
+    # Origens padrão para desenvolvimento e GitHub Pages
+    allowed_origins = [
+        "http://localhost:8080",
+        "http://localhost:3000",
+        "http://127.0.0.1:8080",
+        "https://*.github.io",  # Permite qualquer subdomínio do GitHub Pages
+    ]
+
+# Adicionar middleware CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos (GET, POST, OPTIONS, etc.)
+    allow_headers=["*"],  # Permite todos os headers
+)
+
+# Log das origens permitidas
+print("🌐 CORS configurado!")
+print(f"📋 Origens permitidas: {', '.join(allowed_origins)}")
 
 # Configurar templates
 templates = Jinja2Templates(directory="templates")
@@ -82,8 +111,13 @@ async def predict(file: UploadFile = File(...)):
 
 @app.get("/health")
 async def health():
-    """Health check endpoint"""
-    return {"status": "ok", "model": "MobileNetV2"}
+    """Health check endpoint com informações de CORS"""
+    return {
+        "status": "ok",
+        "model": "MobileNetV2",
+        "cors_enabled": True,
+        "allowed_origins": allowed_origins
+    }
 
 if __name__ == "__main__":
     import uvicorn
