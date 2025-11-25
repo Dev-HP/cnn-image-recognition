@@ -9,8 +9,8 @@
  */
 
 const API_CONFIG = {
-    // URL base da API (atualize com sua URL do Vercel)
-    baseURL: 'https://your-project.vercel.app',
+    // URL base da API (Vercel)
+    baseURL: 'https://cnn-image-recognition-helioo.vercel.app',
     
     // Para desenvolvimento local, descomente a linha abaixo:
     // baseURL: 'http://localhost:8080',
