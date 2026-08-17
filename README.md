@@ -33,6 +33,10 @@ MobileNetV2 + TensorFlow/Keras
 
 Adicione aqui uma captura real do fluxo de upload, processamento e resultado antes de publicar uma URL de demonstração. Não mantenha links genéricos ou uma URL externa quebrada como se fossem uma demo funcional.
 
+## Space do Hugging Face
+
+A implementação independente para Gradio está em [`space/`](space/). Ela usa dependências fixadas, retorna Markdown e está preparada para o ambiente de Spaces. O deploy público antigo pode permanecer em erro até que esses arquivos sejam sincronizados na Space; consulte [`SPACE_DEPLOYMENT.md`](SPACE_DEPLOYMENT.md) para o procedimento.
+
 ## Execução local
 
 ### Backend
@@ -85,6 +89,8 @@ CNN.DEMO.py              execução por linha de comando
 test_cnn.py              geração de imagem de teste
 test_cnn_simple.py       teste simples de reconhecimento
 DEPLOY.md                notas de publicação
+SPACE_DEPLOYMENT.md      publicação da interface Gradio
+space/                   app e dependências da Space CNN
 LICENSE                  licença MIT
 ```
 
